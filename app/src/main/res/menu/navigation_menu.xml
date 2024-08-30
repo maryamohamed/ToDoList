@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_all"
+        android:title="All Tasks" />
+                <item
+                    android:id="@+id/nav_Personal"
+                    android:icon="@drawable/icon_person"
+                    android:title="Personal" />
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/icon_home"
+                    android:title="Home" />
+                <item
+                    android:id="@+id/nav_work"
+                    android:icon="@drawable/icon_work"
+                    android:title="Work " />
+
+
+
+    <item android:title="comunicate">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/icon_info"
+                android:title="About us" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/icon_contact"
+                android:title="Contact" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/icon_share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+</menu>
