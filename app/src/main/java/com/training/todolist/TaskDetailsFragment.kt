@@ -11,10 +11,12 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 
-class AddTaskFragment : Fragment() {
+class TaskDetailsFragment : Fragment() {
 
     private lateinit var taskViewModel: TaskViewModel
     private lateinit var categorySpinner: Spinner
+    private var taskId: Int? = null
+    private var task: Task? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,19 +41,47 @@ class AddTaskFragment : Fragment() {
             categorySpinner.adapter = adapter
         }
 
+        // Retrieve the task ID passed as an argument
+        taskId = arguments?.getInt("task_id")
+
+        taskId?.let { id ->
+            // Fetch the task from the ViewModel using the task ID
+            taskViewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
+                task = tasks.find { it.id == id }
+                task?.let {
+                    titleEditText.setText(it.title)
+                    categorySpinner.setSelection(
+                        (categorySpinner.adapter as ArrayAdapter<String>).getPosition(it.category)
+                    )
+                    descriptionEditText.setText(it.description)
+                }
+            }
+        }
+
         saveButton.setOnClickListener {
             val title = titleEditText.text.toString()
             val category = categorySpinner.selectedItem.toString()
             val description = descriptionEditText.text.toString()
 
-            val task = com.training.todolist.Task(
-                title = title,
-                category = category,
-                description = description
-            )
-            taskViewModel.insert(task)
+            if (task != null) {
+                // Update the existing task
+                task?.apply {
+                    this.title = title
+                    this.category = category
+                    this.description = description
+                }
+                task?.let { taskViewModel.updateTask(it) }
+            } else {
+                // Insert a new task
+                val newTask = com.training.todolist.Task(
+                    title = title,
+                    category = category,
+                    description = description
+                )
+                taskViewModel.insert(newTask)
+            }
 
-            // Go back to com.training.todolist.HomeFragment after saving the task
+            // Go back to HomeFragment after saving the task
             requireActivity().supportFragmentManager.popBackStack()
         }
 

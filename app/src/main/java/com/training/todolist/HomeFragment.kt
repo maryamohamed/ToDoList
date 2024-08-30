@@ -1,5 +1,6 @@
 package com.training.todolist
 
+import TaskAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +20,7 @@ class HomeFragment : Fragment() {
         private const val ARG_CATEGORY = "category"
 
         fun newInstance(category: String?): HomeFragment {
-            val fragment = HomeFragment()
+            val fragment = com.training.todolist.HomeFragment()
             val args = Bundle()
             args.putString(ARG_CATEGORY, category)
             fragment.arguments = args
@@ -38,7 +39,17 @@ class HomeFragment : Fragment() {
 
         // Set up RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
-        taskAdapter = TaskAdapter(taskViewModel)
+        taskAdapter = TaskAdapter(taskViewModel) { task ->
+            val fragment = TaskDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt("task_id", task.id) // Pass the task ID
+                }
+            }
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
         recyclerView.adapter = taskAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -59,7 +70,7 @@ class HomeFragment : Fragment() {
         val fab: FloatingActionButton = view.findViewById(R.id.fab_add_task)
         fab.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, AddTaskFragment())
+                .replace(R.id.fragment_container, com.training.todolist.AddTaskFragment())
                 .addToBackStack(null)
                 .commit()
         }
