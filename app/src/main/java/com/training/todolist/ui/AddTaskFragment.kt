@@ -1,4 +1,4 @@
-package com.training.todolist
+package com.training.todolist.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,9 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.training.todolist.R
+import com.training.todolist.data.Task
+import com.training.todolist.model.TaskViewModel
 
 class AddTaskFragment : Fragment() {
 
@@ -44,14 +47,14 @@ class AddTaskFragment : Fragment() {
             val category = categorySpinner.selectedItem.toString()
             val description = descriptionEditText.text.toString()
 
-            val task = com.training.todolist.Task(
+            val task = Task(
                 title = title,
                 category = category,
                 description = description
             )
             taskViewModel.insert(task)
 
-            // Go back to com.training.todolist.HomeFragment after saving the task
+            // Go back to com.training.todolist.ui.HomeFragment after saving the task
             requireActivity().supportFragmentManager.popBackStack()
         }
 

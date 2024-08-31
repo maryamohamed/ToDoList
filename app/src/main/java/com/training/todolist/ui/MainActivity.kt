@@ -1,9 +1,10 @@
-package com.training.todolist
+package com.training.todolist.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.training.todolist.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {

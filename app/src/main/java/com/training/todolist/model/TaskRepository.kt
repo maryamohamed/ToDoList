@@ -1,8 +1,8 @@
-package com.training.todolist
+package com.training.todolist.model
 
 import androidx.lifecycle.LiveData
-import com.training.todolist.Task
-import com.training.todolist.TaskDao
+import com.training.todolist.data.Task
+import com.training.todolist.data.TaskDao
 
 class TaskRepository(private val taskDao: TaskDao) {
 

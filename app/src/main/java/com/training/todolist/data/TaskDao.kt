@@ -1,4 +1,4 @@
-package com.training.todolist
+package com.training.todolist.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.training.todolist.Task
+import com.training.todolist.data.Task
 
 @Dao
 interface TaskDao {

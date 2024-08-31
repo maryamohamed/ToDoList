@@ -1,6 +1,6 @@
-package com.training.todolist
+package com.training.todolist.ui
 
-import TaskAdapter
+import com.training.todolist.model.TaskAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.training.todolist.R
+import com.training.todolist.model.TaskViewModel
 
 class HomeFragment : Fragment() {
 
@@ -20,7 +22,7 @@ class HomeFragment : Fragment() {
         private const val ARG_CATEGORY = "category"
 
         fun newInstance(category: String?): HomeFragment {
-            val fragment = com.training.todolist.HomeFragment()
+            val fragment = HomeFragment()
             val args = Bundle()
             args.putString(ARG_CATEGORY, category)
             fragment.arguments = args
@@ -70,7 +72,7 @@ class HomeFragment : Fragment() {
         val fab: FloatingActionButton = view.findViewById(R.id.fab_add_task)
         fab.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, com.training.todolist.AddTaskFragment())
+                .replace(R.id.fragment_container, AddTaskFragment())
                 .addToBackStack(null)
                 .commit()
         }

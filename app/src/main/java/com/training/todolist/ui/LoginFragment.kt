@@ -1,4 +1,4 @@
-package com.training.todolist
+package com.training.todolist.ui
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.training.todolist.R
 
 class LoginFragment : Fragment() {
 

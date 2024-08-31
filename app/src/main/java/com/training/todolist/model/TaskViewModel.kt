@@ -1,9 +1,11 @@
-package com.training.todolist
+package com.training.todolist.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.training.todolist.data.Task
+import com.training.todolist.data.TaskDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -14,7 +16,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         val taskDao = TaskDatabase.getDatabase(application).taskDao()
-        repository = com.training.todolist.TaskRepository(taskDao)
+        repository = TaskRepository(taskDao)
         allTasks = repository.allTasks
     }
 

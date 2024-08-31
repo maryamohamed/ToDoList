@@ -1,4 +1,4 @@
-package com.training.todolist
+package com.training.todolist.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

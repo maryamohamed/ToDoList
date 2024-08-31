@@ -1,3 +1,5 @@
+package com.training.todolist.model
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,12 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.training.todolist.R
-import com.training.todolist.Task
-import com.training.todolist.TaskViewModel
+import com.training.todolist.data.Task
 
 class TaskAdapter(
     private val taskViewModel: TaskViewModel,
-    private val onTaskClick: (Task) -> Unit // Click listener
+    private val onTaskClick: (Task) -> Unit
 ) : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TasksComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {

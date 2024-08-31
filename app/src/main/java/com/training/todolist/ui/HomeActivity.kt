@@ -1,7 +1,9 @@
-package com.training.todolist
+package com.training.todolist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -9,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.training.todolist.R
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,6 +44,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment.newInstance(null))
             navigationView.setCheckedItem(R.id.nav_all)
+        }
+        val headerView = navigationView.getHeaderView(0)
+        val joinImageView: ImageView = headerView.findViewById(R.id.join)
+
+        // Set an OnClickListener to navigate to TabsActivity
+        joinImageView.setOnClickListener {
+            val intent = Intent(this, TabsActivity::class.java)
+            startActivity(intent)
         }
     }
 

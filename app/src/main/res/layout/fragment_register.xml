@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".RegisterFragment">
+    tools:context=".ui.RegisterFragment">
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primary"
             android:inputType="text"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +79,7 @@
             android:backgroundTint="@color/primary"
             android:hint="@string/second_name"
             android:inputType="text"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -107,7 +107,7 @@
             android:backgroundTint="@color/primary"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -132,7 +132,7 @@
             android:backgroundTint="@color/primary"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton

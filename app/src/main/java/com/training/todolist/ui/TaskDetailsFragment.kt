@@ -1,4 +1,4 @@
-package com.training.todolist
+package com.training.todolist.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,9 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.training.todolist.R
+import com.training.todolist.data.Task
+import com.training.todolist.model.TaskViewModel
 
 class TaskDetailsFragment : Fragment() {
 
@@ -22,7 +25,7 @@ class TaskDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_add_task, container, false)
+        val view = inflater.inflate(R.layout.fragment_task_details, container, false)
 
         val titleEditText: EditText = view.findViewById(R.id.edit_text_title)
         categorySpinner = view.findViewById(R.id.spinner_category)
@@ -73,7 +76,7 @@ class TaskDetailsFragment : Fragment() {
                 task?.let { taskViewModel.updateTask(it) }
             } else {
                 // Insert a new task
-                val newTask = com.training.todolist.Task(
+                val newTask = Task(
                     title = title,
                     category = category,
                     description = description
